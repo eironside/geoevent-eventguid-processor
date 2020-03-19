@@ -1,5 +1,9 @@
 package com.esri.geoevent.processor.eventguid;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.esri.ges.core.property.LabeledValue;
 import com.esri.ges.core.property.PropertyDefinition;
 import com.esri.ges.core.property.PropertyException;
 import com.esri.ges.core.property.PropertyType;
@@ -20,8 +24,13 @@ public class EventGuidProcessorDefinition extends GeoEventProcessorDefinitionBas
 
 	public EventGuidProcessorDefinition() {
 		try {
+
+			List<LabeledValue> allowedFieldTypes = new ArrayList<LabeledValue>();
+			allowedFieldTypes.add(new LabeledValue("String", "String:One"));
+
 			PropertyDefinition guidFieldProperty = new PropertyDefinition(GUID_FIELD_NAME,
-					PropertyType.GeoEventDefinitionField, null, GUID_FIELD_LAB, GUID_FIELD_DES, true, false);
+					PropertyType.GeoEventDefinitionField, null, GUID_FIELD_LAB, GUID_FIELD_DES, true, false,
+					allowedFieldTypes);
 			propertyDefinitions.put(GUID_FIELD_NAME, guidFieldProperty);
 		} catch (PropertyException e) {
 			LOGGER.warn("Failed to create property", e);
@@ -35,7 +44,7 @@ public class EventGuidProcessorDefinition extends GeoEventProcessorDefinitionBas
 
 	@Override
 	public String getDomain() {
-		return "${project.groupId}";
+		return "com.esri.geoevent.processor";
 	}
 
 	@Override
