@@ -36,3 +36,8 @@ Esri welcomes contributions from anyone and everyone. Please see our [guidelines
   * `Guid Field` Specifies a string field that the guid value should be inserted into.
    The guid string field should already exist in the event definition.
 
+## Debugging
+The logger for this processor is listed below. Set it to TRACE to follow the processing details.
+
+com.esri.geoevent.processor.eventguid.EventGuidProcessor
+
